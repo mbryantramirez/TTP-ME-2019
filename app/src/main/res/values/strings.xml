@@ -1,0 +1,8 @@
+<resources>
+  <string name="app_name">TTP-ME-2019</string>
+  <string name="group_name">Group Name</string>
+
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="refresh">Refresh</string>
+</resources>
