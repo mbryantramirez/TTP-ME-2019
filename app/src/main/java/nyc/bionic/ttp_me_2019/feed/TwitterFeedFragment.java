@@ -23,7 +23,7 @@ import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider;
 import java.util.ArrayList;
 import java.util.List;
 import nyc.bionic.ttp_me_2019.R;
-import nyc.bionic.ttp_me_2019.controller.StatusesAdapter;
+import nyc.bionic.ttp_me_2019.controller.TwitterFeedAdapter;
 import nyc.bionic.ttp_me_2019.model.StatusesItem;
 import nyc.bionic.ttp_me_2019.profile.TwitterProfileInteractor;
 import nyc.bionic.ttp_me_2019.repo.LocationRepository;
@@ -39,7 +39,7 @@ public class TwitterFeedFragment extends Fragment implements TwitterFeedPresenta
   private TwitterFeedPresenter twitterFeedPresentation;
   private List<StatusesItem> statusesItems = new ArrayList<>();
   private TwitterProfileInteractor twitterProfileInteractor;
-  private StatusesAdapter statusesAdapter;
+  private TwitterFeedAdapter twitterFeedAdapter;
   private String latLong;
   private String tag;
 
@@ -108,7 +108,6 @@ public class TwitterFeedFragment extends Fragment implements TwitterFeedPresenta
             twitterFeedPresentation.getStatuses(tag, latLong, this);
           } else {
             twitterFeedPresentation.getStatuses(tag, null, this);
-
           }
         });
   }
@@ -128,7 +127,7 @@ public class TwitterFeedFragment extends Fragment implements TwitterFeedPresenta
   public void showStatuses(List<StatusesItem> statusesItemList) {
     statusesItems = statusesItemList;
     Log.d(TwitterFeedFragment.class.getName(), "onLoadStatuses: " + statusesItems.size());
-    statusesAdapter.setData(statusesItemList);
+    twitterFeedAdapter.setData(statusesItemList);
   }
 
   @Override
@@ -146,8 +145,8 @@ public class TwitterFeedFragment extends Fragment implements TwitterFeedPresenta
   private void initRecyclerView(List<StatusesItem> statusesItems) {
     mainFeedRecyclerView
         .setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
-    statusesAdapter = new StatusesAdapter(statusesItems, twitterProfileInteractor);
-    mainFeedRecyclerView.setAdapter(statusesAdapter);
+    twitterFeedAdapter = new TwitterFeedAdapter(statusesItems, twitterProfileInteractor);
+    mainFeedRecyclerView.setAdapter(twitterFeedAdapter);
   }
 
   public static TwitterFeedFragment newInstance(String str) {

@@ -17,18 +17,18 @@ import nyc.bionic.ttp_me_2019.R;
 import nyc.bionic.ttp_me_2019.model.StatusesItem;
 import nyc.bionic.ttp_me_2019.profile.TwitterProfileInteractor;
 
-public class StatusesAdapter extends Adapter<StatusesAdapter.MainFeedViewHolder> {
+public class TwitterFeedAdapter extends Adapter<TwitterFeedAdapter.MainFeedViewHolder> {
 
   private List<StatusesItem> statusesItems;
   private TwitterProfileInteractor twitterProfileInteractor;
 
-  public StatusesAdapter(List<StatusesItem> statusesItems,
+  public TwitterFeedAdapter(List<StatusesItem> statusesItems,
       TwitterProfileInteractor twitterProfileInteractor) {
     this.twitterProfileInteractor = twitterProfileInteractor;
     this.statusesItems = statusesItems;
   }
 
-  public StatusesAdapter(List<StatusesItem> statusesItems) {
+  public TwitterFeedAdapter(List<StatusesItem> statusesItems) {
     this.statusesItems = statusesItems;
   }
 
@@ -82,8 +82,6 @@ public class StatusesAdapter extends Adapter<StatusesAdapter.MainFeedViewHolder>
       screenNameTextView.setText(statusesItem.getUser().getName());
       createdTimeTextView.setText(statusesItem.getCreatedAt());
       statusTextView.setText(statusesItem.getText());
-      Log.d(StatusesAdapter.class.getName(),
-          "onBind: " + statusesItem.getUser().getProfileImageUrlHttps());
       Picasso.get().load(statusesItem.getUser().getProfileImageUrlHttps())
           .into(profilePhotoImageView);
       if (twitterProfileInteractor != null) {

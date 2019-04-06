@@ -37,7 +37,9 @@ public class TwitterFeedPresenter {
 
   public void getStatuses(String tag, String latLong, LifecycleOwner lifecycleOwner) {
     twitterFeedPresentation.showLoading();
-    latLong = latLong + "," + "1mi";
+    if (latLong != null) {
+      latLong = latLong + "," + "1mi";
+    }
     twitterApiRepository.getSearchTweets(tag, latLong).observeOn(AndroidSchedulers.mainThread())
         .as(AutoDispose.autoDisposable(
             AndroidLifecycleScopeProvider.from(lifecycleOwner)))

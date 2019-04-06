@@ -21,7 +21,8 @@ import org.jetbrains.annotations.NotNull;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainViewPagerFragment extends Fragment {
+public class
+MainViewPagerFragment extends Fragment {
 
   @BindView(R.id.main_act_tabs)
   TabLayout tabLayout;

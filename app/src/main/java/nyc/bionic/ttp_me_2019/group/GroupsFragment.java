@@ -12,14 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 import java.util.List;
 import nyc.bionic.ttp_me_2019.R;
 import nyc.bionic.ttp_me_2019.controller.GroupsAdapter;
 import nyc.bionic.ttp_me_2019.db.Group;
 
-public class GroupsFragment extends Fragment implements GroupsPresentation {
+public class GroupsFragment extends Fragment implements GroupsPresentation, GroupDBInteractor {
 
   @BindView(R.id.groups_rv)
   RecyclerView groupsRecyclerView;
@@ -72,10 +72,19 @@ public class GroupsFragment extends Fragment implements GroupsPresentation {
     groupsAdapter.setData(groups);
   }
 
+  @Override
+  public void removeGroup(Group group) {
+    groupsPresenter.deleteGroup(group);
+    Snackbar.make(getActivity().findViewById(R.id.main_coordinator_layout),
+        getString(R.string.GroupFragmentSnackBarMessage),
+        Snackbar.LENGTH_SHORT).show();
+  }
+
+
   private void initRecyclerView(List<Group> groups) {
     groupsRecyclerView
         .setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
-    groupsAdapter = new GroupsAdapter(groups, groupFragmentInteractor);
+    groupsAdapter = new GroupsAdapter(groups, groupFragmentInteractor, this);
     groupsRecyclerView.setAdapter(groupsAdapter);
   }
 

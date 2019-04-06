@@ -17,12 +17,14 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:ems="10"
-      android:hint="@string/group_name"/>
+      android:hint="@string/group_name"
+      android:inputType="text"/>
 
   </com.google.android.material.textfield.TextInputLayout>
 
 
   <Button
+    android:hint="@string/save"
     android:id="@+id/save_group_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"/>

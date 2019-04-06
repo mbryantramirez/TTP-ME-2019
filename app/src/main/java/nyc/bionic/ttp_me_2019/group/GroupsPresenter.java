@@ -6,22 +6,23 @@ import androidx.lifecycle.LifecycleOwner;
 import com.uber.autodispose.AutoDispose;
 import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import java.util.ArrayList;
 import java.util.List;
 import nyc.bionic.ttp_me_2019.feed.TwitterFeedPresenter;
 import nyc.bionic.ttp_me_2019.db.Group;
 import nyc.bionic.ttp_me_2019.db.GroupDatabase;
-import nyc.bionic.ttp_me_2019.db.GroupStore;
+import nyc.bionic.ttp_me_2019.db.GroupDAO;
 
 public class GroupsPresenter {
 
 
-  private GroupStore groupStore;
+  private GroupDAO groupDAO;
   private GroupsPresentation groupsPresentation;
   private List<Group> groupList = new ArrayList<>();
 
   public GroupsPresenter(Context context) {
-    groupStore = GroupDatabase.getInstance(context).groupStore();
+    groupDAO = GroupDatabase.getInstance(context).groupStore();
   }
 
   public void attach(GroupsPresentation groupsPresentation) {
@@ -33,13 +34,17 @@ public class GroupsPresenter {
   }
 
   public void getGroups(LifecycleOwner lifecycleOwner) {
-    groupStore.flowAllGroups().observeOn(AndroidSchedulers.mainThread())
+    groupDAO.flowAllGroups().observeOn(AndroidSchedulers.mainThread())
         .as(AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(lifecycleOwner)))
         .subscribe(groups -> {
           groupList = groups;
           Log.d(TwitterFeedPresenter.class.getName(), "onSubscribe: " + groupList.size());
           groupsPresentation.showGroups(groupList);
         });
+  }
+
+  public void deleteGroup(Group group) {
+    groupDAO.delete(group).subscribeOn(Schedulers.io()).subscribe();
   }
 
 

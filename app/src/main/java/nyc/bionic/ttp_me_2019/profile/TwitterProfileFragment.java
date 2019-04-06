@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 import nyc.bionic.ttp_me_2019.R;
-import nyc.bionic.ttp_me_2019.controller.StatusesAdapter;
+import nyc.bionic.ttp_me_2019.controller.TwitterFeedAdapter;
 import nyc.bionic.ttp_me_2019.model.StatusesItem;
 import nyc.bionic.ttp_me_2019.model.User;
 import org.jetbrains.annotations.NotNull;
@@ -52,7 +52,7 @@ public class TwitterProfileFragment extends Fragment implements TwitterProfilePr
 
   private TwitterProfilePresenter twitterProfilePresentation;
   private List<StatusesItem> statusesItems = new ArrayList<>();
-  private StatusesAdapter statusesAdapter;
+  private TwitterFeedAdapter twitterFeedAdapter;
   private String userId;
   private String screenname;
   private String name;
@@ -118,14 +118,14 @@ public class TwitterProfileFragment extends Fragment implements TwitterProfilePr
   @Override
   public void showStatuses(List<StatusesItem> statusesItemList) {
     statusesItems = statusesItemList;
-    statusesAdapter.setData(statusesItemList);
+    twitterFeedAdapter.setData(statusesItemList);
   }
 
   private void initRecyclerView(List<StatusesItem> statusesItems) {
     lastTweetsRecycler
         .setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
-    statusesAdapter = new StatusesAdapter(statusesItems);
-    lastTweetsRecycler.setAdapter(statusesAdapter);
+    twitterFeedAdapter = new TwitterFeedAdapter(statusesItems);
+    lastTweetsRecycler.setAdapter(twitterFeedAdapter);
   }
 
   public static TwitterProfileFragment newInstance(User user) {

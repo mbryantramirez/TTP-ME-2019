@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 @Database(entities = {Group.class}, version = 2, exportSchema = false)
 public abstract class GroupDatabase extends RoomDatabase {
 
-  public abstract GroupStore groupStore();
+  public abstract GroupDAO groupStore();
 
   private static final String DB_NAME = "groups.db";
   private static volatile GroupDatabase INSTANCE = null;
