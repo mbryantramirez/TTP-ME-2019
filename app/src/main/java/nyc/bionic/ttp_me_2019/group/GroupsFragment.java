@@ -19,7 +19,7 @@ import nyc.bionic.ttp_me_2019.R;
 import nyc.bionic.ttp_me_2019.controller.GroupsAdapter;
 import nyc.bionic.ttp_me_2019.db.Group;
 
-public class GroupsFragment extends Fragment implements GroupsPresentation, GroupDBInteractor {
+public class GroupsFragment extends Fragment implements GroupsPresentationContract, GroupDBInteractor {
 
   @BindView(R.id.groups_rv)
   RecyclerView groupsRecyclerView;

@@ -28,7 +28,8 @@ import nyc.bionic.ttp_me_2019.model.StatusesItem;
 import nyc.bionic.ttp_me_2019.profile.TwitterProfileInteractor;
 import nyc.bionic.ttp_me_2019.repo.LocationRepository;
 
-public class TwitterFeedFragment extends Fragment implements TwitterFeedPresentation {
+public class
+    TwitterFeedFragment extends Fragment implements TwitterFeedPresentationContract {
 
   @BindView(R.id.main_feed_rv)
   RecyclerView mainFeedRecyclerView;
@@ -121,6 +122,11 @@ public class TwitterFeedFragment extends Fragment implements TwitterFeedPresenta
   @Override
   public void refresh() {
     twitterFeedPresentation.getStatuses(tag, latLong, this);
+  }
+
+  @Override
+  public boolean testIsValid() {
+    return true;
   }
 
   @Override

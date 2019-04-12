@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TwitterProfileFragment extends Fragment implements TwitterProfilePresentation {
+public class TwitterProfileFragment extends Fragment implements TwitterProfileContract {
 
   @BindView(R.id.twitter_profile_iv)
   ImageView twitterProfileImageView;

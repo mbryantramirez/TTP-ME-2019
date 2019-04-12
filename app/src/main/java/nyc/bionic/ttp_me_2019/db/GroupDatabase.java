@@ -10,7 +10,7 @@ public abstract class GroupDatabase extends RoomDatabase {
 
   public abstract GroupDAO groupStore();
 
-  private static final String DB_NAME = "groups.db";
+  public static final String DB_NAME = "groups.db";
   private static volatile GroupDatabase INSTANCE = null;
 
   public synchronized static GroupDatabase getInstance(Context context) {

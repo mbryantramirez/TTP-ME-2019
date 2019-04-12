@@ -12,7 +12,7 @@ import nyc.bionic.ttp_me_2019.repo.TwitterApiRepository;
 
 public class TwitterProfilePresenter {
 
-  private TwitterProfilePresentation twitterProfilePresentation;
+  private TwitterProfileContract twitterProfilePresentation;
 
   private TwitterApiRepository twitterApiRepository;
 
@@ -22,7 +22,7 @@ public class TwitterProfilePresenter {
     twitterApiRepository = TwitterApiRepository.getInstance(context);
   }
 
-  public void attach(TwitterProfilePresentation twitterProfilePresentation) {
+  public void attach(TwitterProfileContract twitterProfilePresentation) {
     this.twitterProfilePresentation = twitterProfilePresentation;
   }
 

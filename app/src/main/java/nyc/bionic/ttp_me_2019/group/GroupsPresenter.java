@@ -18,14 +18,14 @@ public class GroupsPresenter {
 
 
   private GroupDAO groupDAO;
-  private GroupsPresentation groupsPresentation;
+  private GroupsPresentationContract groupsPresentation;
   private List<Group> groupList = new ArrayList<>();
 
   public GroupsPresenter(Context context) {
     groupDAO = GroupDatabase.getInstance(context).groupStore();
   }
 
-  public void attach(GroupsPresentation groupsPresentation) {
+  public void attach(GroupsPresentationContract groupsPresentation) {
     this.groupsPresentation = groupsPresentation;
   }
 

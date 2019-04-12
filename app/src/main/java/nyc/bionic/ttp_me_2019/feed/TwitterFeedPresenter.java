@@ -13,7 +13,7 @@ import nyc.bionic.ttp_me_2019.repo.TwitterApiRepository;
 
 public class TwitterFeedPresenter {
 
-  private TwitterFeedPresentation twitterFeedPresentation;
+  private TwitterFeedPresentationContract twitterFeedPresentation;
 
   private TwitterApiRepository twitterApiRepository;
 
@@ -23,7 +23,7 @@ public class TwitterFeedPresenter {
     twitterApiRepository = TwitterApiRepository.getInstance(context);
   }
 
-  public void attach(TwitterFeedPresentation presentation) {
+  public void attach(TwitterFeedPresentationContract presentation) {
     this.twitterFeedPresentation = presentation;
   }
 

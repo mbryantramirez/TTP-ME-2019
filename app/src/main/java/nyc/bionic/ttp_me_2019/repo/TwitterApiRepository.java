@@ -9,7 +9,7 @@ import nyc.bionic.ttp_me_2019.model.StatusesItem;
 import nyc.bionic.ttp_me_2019.util.Retrofit2Client;
 import nyc.bionic.ttp_me_2019.util.TwitterService;
 
-public class TwitterApiRepository implements TwitterRepository {
+public class TwitterApiRepository implements TwitterRepositoryContract {
 
   private static TwitterApiRepository instance;
   private static TwitterService twitterService;

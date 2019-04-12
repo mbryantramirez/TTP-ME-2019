@@ -4,7 +4,7 @@ import io.reactivex.Flowable;
 import java.util.List;
 import nyc.bionic.ttp_me_2019.model.StatusesItem;
 
-public interface TwitterRepository {
+public interface TwitterRepositoryContract {
 
   Flowable<List<StatusesItem>> getSearchTweets(String q, String loc);
 
