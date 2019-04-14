@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class TwitterInterceptor implements Interceptor {
+public class TwitterOauthInterceptor implements Interceptor {
 
   private String token = null;
 

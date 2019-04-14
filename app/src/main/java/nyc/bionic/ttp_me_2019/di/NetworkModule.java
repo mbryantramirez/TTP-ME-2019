@@ -7,7 +7,7 @@ import dagger.Provides;
 import javax.inject.Singleton;
 import nyc.bionic.ttp_me_2019.repo.TwitterApiRepository;
 import nyc.bionic.ttp_me_2019.util.CachingInterceptor;
-import nyc.bionic.ttp_me_2019.util.TwitterInterceptor;
+import nyc.bionic.ttp_me_2019.util.TwitterOauthInterceptor;
 import nyc.bionic.ttp_me_2019.util.TwitterService;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
@@ -44,7 +44,7 @@ class NetworkModule {
   OkHttpClient providesOkHttpClient(Cache cache) {
     return new OkHttpClient.Builder().cache(cache)
         .addNetworkInterceptor(new CachingInterceptor())
-        .addInterceptor(new TwitterInterceptor())
+        .addInterceptor(new TwitterOauthInterceptor())
         .addInterceptor(new HttpLoggingInterceptor().setLevel(Level.BODY))
         .build();
   }

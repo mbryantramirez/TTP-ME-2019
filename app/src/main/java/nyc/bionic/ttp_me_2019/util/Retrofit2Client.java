@@ -3,7 +3,6 @@ package nyc.bionic.ttp_me_2019.util;
 import android.content.Context;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
-import okhttp3.internal.cache.CacheInterceptor;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.logging.HttpLoggingInterceptor.Level;
 import retrofit2.Retrofit;
@@ -23,7 +22,7 @@ public class Retrofit2Client {
     OkHttpClient okHttpClient = new OkHttpClient.Builder()
         .cache(cache)
         .addNetworkInterceptor(new CachingInterceptor())
-        .addInterceptor(new TwitterInterceptor())
+        .addInterceptor(new TwitterOauthInterceptor())
         .addInterceptor(loggingInterceptor)
         .build();
 
